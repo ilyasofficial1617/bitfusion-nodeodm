@@ -7,4 +7,4 @@ COPY ca.crt /etc/bitfusion/tls/ca.crt
 COPY client.yaml /root/.bitfusion
 COPY servers.conf /root/.bitfusion
 
-ENTRYPOINT [ "bitfusion", "run", "-n", "1", "-p", "0.2", "/usr/bin/node", "/var/www/index.js", "--port", "4000" ]
+ENTRYPOINT [ "bitfusion", "run", "-n", "1", "-p", "0.2", "/usr/bin/node", "/var/www/index.js", "--port", "3000" ]
