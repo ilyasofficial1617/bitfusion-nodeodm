@@ -1,0 +1,9 @@
+FROM opendronemap/nodeodm:gpu
+
+USER root
+RUN apt-get update && apt-get install -y wget && wget -P /root/ https://packages.vmware.com/bitfusion/ubuntu/20.04/bitfusion-client-ubuntu2004_4.5.0-4_amd64.deb
+RUN apt install -y /root/bitfusion-client-ubuntu2004_4.5.0-4_amd64.deb
+COPY /etc/bitfusion/tls/ca.crt /etc/bitfusion/tls/ca.crt
+COPY ~/.bitfusion /root/.bitfusion
+
+ENTRYPOINT [ "bitfusion", "run", "-n", "1", "-p", "0.2", "/usr/bin/node", "/var/www/index.js", "--port", "4000" ]
